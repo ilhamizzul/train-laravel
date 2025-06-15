@@ -3,6 +3,7 @@
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SingleActionController;
+use App\Models\Blog;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
@@ -19,9 +20,7 @@ Route::get('/contact', function () {
 })->name('contact');
 
 Route::group(['prefix' => 'blog', 'as' => 'blog.'], function() {
-    Route::get('/', function() {
-        return "Blog Page";
-    });
+    Route::get('/', [BlogController::class, 'index']);
 
     Route::get('/create', [BlogController::class, 'create'])->name('create');
 
