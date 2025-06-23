@@ -19,6 +19,8 @@ class BlogFactory extends Factory
         return [
             'title' => fake()->sentence(10),
             'description' => fake()->paragraph(),
+            'author' => fake()->name(),
+            'editor' => fake()->name(),
             'status' => fake()->boolean()
         ];
     }
