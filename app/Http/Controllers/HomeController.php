@@ -18,8 +18,24 @@ class HomeController extends Controller
         // ]);
 
         // GET
-        $users = DB::table('users')->get()->where('id', '>', 4);
-        return $users;
+        // $users = DB::table('users')->get()->where('id', '>', 4);
+        // return $users;
+
+        // GET certain column
+        //return DB::table('users')->select(['name', 'email'])->get();
+
+        // UPDATE
+        // DB::table('users')->where('id', 12)->update([
+        //     'password' => 'user321'
+        // ]);
+
+        // DELETE
+        // DB::table('users')->where('id', 12)->delete();
+
+        // SOFT DELETE
+        // DB::table('users')->where('id', 2)->update([
+        //     'delete' => 1
+        // ]);
 
         return view('welcome');
         // return 'this is content from home controller';
