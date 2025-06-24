@@ -37,7 +37,10 @@ class HomeController extends Controller
         //     'delete' => 1
         // ]);
 
-        return view('welcome');
+        // aggregator
+        // return $products = DB::table('products')->min('price');
+
+        // return view('welcome');
         // return 'this is content from home controller';
     }
 
