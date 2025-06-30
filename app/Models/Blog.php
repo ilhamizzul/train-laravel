@@ -9,4 +9,8 @@ class Blog extends Model
 {
     /** @use HasFactory<\Database\Factories\BlogFactory> */
     use HasFactory;
+
+    function scopeActiveContent($query) {
+        return $query->where('status', 1);
+    }
 }
