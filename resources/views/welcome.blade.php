@@ -15,14 +15,14 @@
             </div>
         </div>
     </section>
- 
+
     @include('component.gallery');
 @endsection
 
 @push('scripts')
 <script>
-    $(document).ready(() => {
-        alert("This script is for homepage")
-    })
+    // $(document).ready(() => {
+    //     alert("This script is for homepage")
+    // })
 </script>
 @endpush
