@@ -2,46 +2,44 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
     function index() {
-        //INSERT
-        // DB::table('users')->insert([
-        //     'name' => fake()->name(),
-        //     'email' => fake()->email(),
-        //     'password' => 'user123',
-        //     'email_verified_at' => now(),
-        //     'created_at' => now()
-        // ]);
 
-        // GET
-        // $users = DB::table('users')->get()->where('id', '>', 4);
+        // ELOQUENT INSERT DATA
+        // $user = new User();
+        // $user->name = fake()->name();
+        // $user->email = fake()->freeEmail();
+        // $user->password = '12345';
+        // $user->save();
+
+        // $product = new Product();
+        // $product->name = fake()->sentence(rand(1, 3));
+        // $product->description = fake()->paragraph();
+        // $product->price = rand(100, 400);
+        // $product->save();
+
+        // ELOQUENT GET DATA
+        // $users = User::all()->where('delete', '==', 0);
+        // return dd($users);
+
+        // ELOQUENT UPDATE DATA
+        // $users = User::where('id', 1)->first();
+        // $users->name = 'Ilham Izzul2';
+        // $users->email = 'ilham@gmail.com';
+        // $users->save();
         // return $users;
 
-        // GET certain column
-        //return DB::table('users')->select(['name', 'email'])->get();
+        // ELOQUENT DELETE DATA
+        // $users = User::where('id', 2)->first();
+        // $users->delete();
 
-        // UPDATE
-        // DB::table('users')->where('id', 12)->update([
-        //     'password' => 'user321'
-        // ]);
-
-        // DELETE
-        // DB::table('users')->where('id', 12)->delete();
-
-        // SOFT DELETE
-        // DB::table('users')->where('id', 2)->update([
-        //     'delete' => 1
-        // ]);
-
-        // aggregator
-        // return $products = DB::table('products')->min('price');
-
-        // return view('welcome');
-        // return 'this is content from home controller';
+        return view('welcome');
     }
 
     function showAboutPage() {
