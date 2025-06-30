@@ -11,52 +11,11 @@ class HomeController extends Controller
 {
     function index() {
 
-        // ELOQUENT INSERT DATA BASED ON FILLABLE
-        // Product::create([
-        //     'name' => fake()->name(),
-        //     'description' => fake()->paragraph(),
-        //     'price' => rand(50, 500)
-        // ]);
-
-        // ELOQUENT INSERT MULTIPLE DATA
-        // Product::insert([
-        //     [
-        //         'name' => fake()->name(),
-        //         'description' => fake()->paragraph(),
-        //         'price' => rand(50, 500)
-        //     ],
-        //     [
-        //         'name' => fake()->name(),
-        //         'description' => fake()->paragraph(),
-        //         'price' => rand(50, 500)
-        //     ],
-        //     [
-        //         'name' => fake()->name(),
-        //         'description' => fake()->paragraph(),
-        //         'price' => rand(50, 500)
-        //     ],
-        //     [
-        //         'name' => fake()->name(),
-        //         'description' => fake()->paragraph(),
-        //         'price' => rand(50, 500)
-        //     ],
-        //     [
-        //         'name' => fake()->name(),
-        //         'description' => fake()->paragraph(),
-        //         'price' => rand(50, 500)
-        //     ],
-        //     [
-        //         'name' => fake()->name(),
-        //         'description' => fake()->paragraph(),
-        //         'price' => rand(50, 500)
-        //     ],
-        //     [
-        //         'name' => fake()->name(),
-        //         'description' => fake()->paragraph(),
-        //         'price' => rand(50, 500)
-        //     ],
-        // ]);
-
+        // $product = Product::where([['id' => 1]])->where('price', 303)->get();
+        // $product = Product::where('name', 'LIKE', '%labtop%')->orWhere('description', 'LIKE', '%labortosak')->get();
+        // $product = Product::whereIn('id', [1, 2, 3, 4, 5])->get();
+        $product = Product::whereBetween('price', [100, 200])->get();
+        return $product;
         return view('welcome');
     }
 
