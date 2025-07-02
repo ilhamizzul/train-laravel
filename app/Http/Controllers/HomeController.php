@@ -11,15 +11,6 @@ use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     function index() {
-
-        //Product::find(4)->delete();
-        // RESTORE
-        // $products = Product::withTrashed()->find(1)->restore();
-
-        // FORCE DELETE
-        Product::withTrashed()->find(4)->forceDelete();
-
-        return Product::onlyTrashed()->get();
         return view('welcome');
     }
 

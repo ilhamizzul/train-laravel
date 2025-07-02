@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SingleActionController;
 use App\Models\Blog;
@@ -10,7 +11,7 @@ Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/about', [HomeController::class, 'showAboutPage']) -> name('about');
 
-Route::get('/single-action', SingleActionController::class);
+Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 
 Route::get('/contact', function () {
     $title = 'Contact Page';
@@ -38,13 +39,5 @@ Route::group(['prefix' => 'blog', 'as' => 'blog.'], function() {
 Route::fallback(function() {
     return "Oooppss we couldnt find the page!";
 });
-
-
-
-
-
-Route::get('/user/{id}/{slug}', function($id, $lorem) {
-    return "This is a user " . $id . $lorem . " page";
-})->name('user');
 
 
