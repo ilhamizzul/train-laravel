@@ -6,7 +6,7 @@
         <div class="col-md-6">
             <div class="card my-5">
                 <div class="card-body">
-                    <form>
+                    <form action="" method="POST">
                         <div class="mb-3">
                             <label for="" class="form-label">Name</label>
                             <input name="name" type="text" class="form-control" id="">

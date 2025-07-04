@@ -11,14 +11,15 @@ Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/about', [HomeController::class, 'showAboutPage']) -> name('about');
 
-Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
+Route::post('contact', [ContactController::class, 'contactSubmit'])->name('contact.submit');
 
-Route::get('/contact', function () {
-    $title = 'Contact Page';
-    $content = 'tralalelo tralala';
-    $books = ["Deep work", "Steal like a artist", "Story Brand"];
-    return view('contact.index', ['title' => $title, 'content' => $content, 'books' => $books]);
-})->name('contact');
+// Route::get('/contact', function () {
+//     $title = 'Contact Page';
+//     $content = 'tralalelo tralala';
+//     $books = ["Deep work", "Steal like a artist", "Story Brand"];
+//     return view('contact.index', ['title' => $title, 'content' => $content, 'books' => $books]);
+// })->name('contact');
 
 Route::group(['prefix' => 'blog', 'as' => 'blog.'], function() {
     Route::get('/', [BlogController::class, 'index']);
