@@ -12,6 +12,6 @@ class ContactController extends Controller
     }
 
     function contactSubmit() {
- 
+        
     }
 }
