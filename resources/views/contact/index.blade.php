@@ -17,19 +17,19 @@
                         @csrf
                         <div class="mb-3">
                             <label for="" class="form-label">Name</label>
-                            <input name="name" type="text" class="form-control" id="">
+                            <input name="name" type="text" class="form-control" id="" value="{{ old('name') }}">
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Email</label>
-                            <input name="email" type="email" class="form-control" id="">
+                            <input name="email" type="email" class="form-control" id="" value="{{ old('email') }}">
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Subject</label>
-                            <input name="subject" type="text" class="form-control" id="">
+                            <input name="subject" type="text" class="form-control" id="" value="{{ old('subject') }}">
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Message</label>
-                            <textarea name="message" id="" cols="30" rows="10" class="form-control"></textarea>
+                            <textarea name="message" id="" cols="30" rows="10" class="form-control">{{ old('message') }}</textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
