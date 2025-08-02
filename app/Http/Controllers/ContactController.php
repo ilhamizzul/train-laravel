@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactRequest;
+use App\Models\Contact;
 
 class ContactController extends Controller
 {
@@ -13,7 +14,13 @@ class ContactController extends Controller
 
     function contactSubmit(ContactRequest $request) {
 
-        dd($request->all()); // Debugging line, remove in production
+        // Handle the validated contact form data
+        $contact = new Contact();
+        $contact->name = $request->input('name');
+        $contact->email = $request->input('email');
+        $contact->subject = $request->input('subject');
+        $contact->message = $request->input('message');
+        $contact->save();
         // Redirect back with a success message
         return redirect()->route('contact.index')->with('success', 'Thank you for contacting us!');
 

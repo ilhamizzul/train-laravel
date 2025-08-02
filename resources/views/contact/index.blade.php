@@ -11,6 +11,11 @@
                     </div>
                 @endforeach
             @endif
+            @if (session('success'))
+                <div class="alert mt-2 alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
             <div class="card my-5">
                 <div class="card-body">
                     <form action="{{ route('contact.submit') }}" method="POST">
@@ -29,7 +34,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Message</label>
-                            <textarea name="message" id="" cols="30" rows="10" class="form-control">{{ old('message') }}</textarea>
+                            <textarea name="message" id="" class="form-control">{{ old('message') }}</textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
