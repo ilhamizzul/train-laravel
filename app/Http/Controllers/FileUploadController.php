@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File as FileFacade;
 
 class FileUploadController extends Controller
 {
@@ -14,15 +16,19 @@ class FileUploadController extends Controller
     }
 
     function store(Request $request) {
-        $file = $request->file('file')->store('/', 'dir_public');
+        $request->validate([
+            'file' => ['required', 'image']
+        ]);
+        $file = $request->file('file');
+        $customName = 'laravel_' . Str::uuid() . '.' . $file->getClientOriginalExtension();
+
+        // Store the file in the 'uploads' directory with the custom name
+        $file->storeAs('/', $customName, 'dir_public');
+
+        // Save file information to the database
         $fileStore = new File();
-        $fileStore->file_path = '/uploads/'.$file;
+        $fileStore->file_path = '/uploads/' . $customName;
         $fileStore->save();
-
-        //dd("stored"); // Debugging line to check the file path
-
-        // Save file information to the database if needed
-        // File::create(['file_path' => $path]);
 
         return redirect()->back()->with('success', 'File uploaded successfully!');
     }
@@ -30,7 +36,7 @@ class FileUploadController extends Controller
     function destroy($id) {
         $file = File::find($id);
         if ($file) {
-            Storage::disk('dir_public')->delete(str_replace('/uploads/', '', $file->file_path));
+            FileFacade::delete(public_path($file->file_path)); // Delete the file from the public directory
             $file->delete();
             return redirect()->back()->with('success', 'File deleted successfully!');
         }

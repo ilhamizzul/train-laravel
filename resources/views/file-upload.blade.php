@@ -9,6 +9,13 @@
                     {{ session('success') }}
                 </div>
             @endif
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    <div class="alert mt-2 alert-danger">
+                        {{ $error }}
+                    </div>
+                @endforeach
+            @endif
             <div class="card my-5">
                 <div class="card-body">
                     <form action="{{ route('file.upload.store') }}" method="POST" enctype="multipart/form-data">
